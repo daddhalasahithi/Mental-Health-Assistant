@@ -1,0 +1,28 @@
+!pip install groq
+from groq import Groq
+client=Groq(api_key="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")
+while True:
+    user_input=input("You: ")
+    if user_input.lower()=="exit":
+        break
+    if "sad" in user_input or "depressed" in user_input:
+        context="User is sad. Give emotional support."
+    elif "stress" in user_input or "anxious" in user_input:
+        context="User is stressed. Suggest relaxation."
+    else:
+        context="User is normal. Respond helpfully."
+    response=client.chat.completions.create(model="llama-3.1-8b-instant",messages=[{"role":"system","content":context},{"role":"user","content":user_input}])
+    print("Bot:",response.choices[0].message.content)from groq import Groq
+client=Groq(api_key="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")
+while True:
+    user_input=input("You: ")
+    if user_input.lower()=="exit":
+        break
+    if "sad" in user_input or "depressed" in user_input:
+        context="User is sad. Give emotional support."
+    elif "stress" in user_input or "anxious" in user_input:
+        context="User is stressed. Suggest relaxation."
+    else:
+        context="User is normal. Respond helpfully."
+    response=client.chat.completions.create(model="llama-3.1-8b-instant",messages=[{"role":"system","content":context},{"role":"user","content":user_input}])
+    print("Bot:",response.choices[0].message.content)
